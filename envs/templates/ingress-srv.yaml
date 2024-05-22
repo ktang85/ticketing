@@ -7,13 +7,12 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
     alb.ingress.kubernetes.io/healthcheck-path: /actuator/health/liveness
-    nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   ingressClassName: alb
   rules:
     - http:
         paths:
-          - path: /api/users/?(.*)
+          - path: /api/users
             pathType: Prefix
             backend:
               service:
