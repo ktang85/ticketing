@@ -4,6 +4,7 @@ metadata:
   labels:
     app: auth
   name: ticketing-auth-depl-v1
+  namespace: team-ticketing
 spec:
   replicas: 1
   selector:
@@ -24,6 +25,7 @@ metadata:
   labels:
     app: auth
   name: ticketing-auth-srv-v1
+  namespace: team-ticketing
 spec:
   ports:
     - name: auth
