@@ -1,7 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: auth-depl
+  labels:
+    app: auth
+  name: ticketing-auth-depl-v1
 spec:
   replicas: 1
   selector:
@@ -13,18 +15,20 @@ spec:
         app: auth
     spec:
       containers:
-        - name: auth
-          image: kevintang1985/auth
+        - image: kevintang1985/auth
+          name: auth
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: auth-srv
-spec:
-  selector:
+  labels:
     app: auth
+  name: ticketing-auth-srv-v1
+spec:
   ports:
     - name: auth
-      protocol: TCP
       port: 3000
+      protocol: TCP
       targetPort: 3000
+  selector:
+    app: auth
