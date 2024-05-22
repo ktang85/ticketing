@@ -16,7 +16,7 @@ spec:
         app: auth
     spec:
       containers:
-        - image: kevintang1985/auth:latest
+        - image: kevintang1985/auth
 ---
 apiVersion: v1
 kind: Service
