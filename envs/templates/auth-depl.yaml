@@ -16,7 +16,9 @@ spec:
         app: auth
     spec:
       containers:
+        - name: ticketing-auth-v1-dev
         - image: kevintang1985/auth
+
 ---
 apiVersion: v1
 kind: Service
