@@ -1,0 +1,8 @@
+namespace: team-ticketing
+
+appName:
+  auth: ticketing-auth-v1-dev
+
+image:
+  name: kevintang1985/auth
+  tag: latest

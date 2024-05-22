@@ -2,35 +2,35 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: auth
-  name: ticketing-auth-depl-v1
-  namespace: team-ticketing
+    app: { { .Values.appName.auth } }
+  name: { { .Values.appName.auth } }
+  namespace: { { .Values.namespace } }
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: auth
+      app: { { .Values.appName.auth } }
   template:
     metadata:
       labels:
-        app: auth
+        app: { { .Values.appName.auth } }
     spec:
       containers:
-        - image: kevintang1985/auth
-          name: auth
+        - image: "{ { .Values.image.name } }:{{ .Values.image.tag }}"
+          name: { { .Values.appName.auth } }
 ---
 apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: auth
-  name: ticketing-auth-srv-v1
-  namespace: team-ticketing
+    app: { { .Values.appName.auth } }
+  name: { { .Values.appName.auth } }
+  namespace: { { .Values.namespace } }
 spec:
   ports:
-    - name: auth
+    - name: { { .Values.appName.auth } }
       port: 3000
       protocol: TCP
       targetPort: 3000
   selector:
-    app: auth
+    app: { { .Values.appName.auth } }
