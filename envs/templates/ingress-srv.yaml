@@ -1,0 +1,22 @@
+apiVersion: networkting.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-srv
+  namespace: team-ticketing
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/healthcheck-path: /actuator/health/liveness
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+          - path: /api/users/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: ticketing-auth-v1-dev
+                port:
+                  number: 3000
