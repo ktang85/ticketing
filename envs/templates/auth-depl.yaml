@@ -28,6 +28,7 @@ metadata:
   name: ticketing-auth-v1-dev
   namespace: team-ticketing
 spec:
+  type: NotePort
   ports:
     - name: auth
       port: 3000
